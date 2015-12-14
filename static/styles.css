@@ -1,0 +1,12 @@
+*{
+    background-color: antiquewhite;
+}
+
+h1{
+    font-family: Arial, serif;
+}
+
+ol{
+    font-family: Arial, serif;
+    border:1px solid blue;
+}
