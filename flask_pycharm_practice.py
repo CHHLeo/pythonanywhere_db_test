@@ -2,12 +2,6 @@ from flask import Flask, render_template, request, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-user_name = 'ch2leo'
-password = '21070527'
-database_host_address = 'ch2leo.mysql.pythonanywhere-services.com'
-database_name = 'ch2leo$test'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://' + user_name + ':' + password + '@' + database_host_address + '/' + database_name
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
 db = SQLAlchemy(app)
 
 
@@ -19,6 +13,19 @@ class Todo(db.Model):
     def __init__(self, title):
         self.title = title
         self.is_completed = False
+
+
+# user_name = 'root'
+# password = ''
+# database_host_address = 'localhost:3306'
+# database_name = 'test'
+user_name = 'ch2leo'
+password = '21070527'
+database_host_address = 'ch2leo.mysql.pythonanywhere-services.com'
+database_name = 'ch2leo$test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://' + user_name + ':' + password + '@' + database_host_address + '/' + database_name
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+db.create_all()
 
 
 @app.route('/')
@@ -37,5 +44,4 @@ def add():
 app.debug = True
 
 if __name__ == '__main__':
-    db.create_all()
     app.run()
